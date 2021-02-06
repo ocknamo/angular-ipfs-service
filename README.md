@@ -31,7 +31,7 @@ Run `yarn build` to build the project. The build artifacts will be stored in the
 
 ## Publishing
 
-After building your library with `yarn build`, go to the dist folder `cd dist/ng-ipfs-service` and run `npm publish`.
+After building your library with `yarn build --prod`, go to the dist folder `cd dist/ng-ipfs-service` and run `npm publish`.
 
 ## Running unit tests
 

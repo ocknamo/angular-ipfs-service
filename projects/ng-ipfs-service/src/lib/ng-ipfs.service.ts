@@ -11,6 +11,8 @@ declare global {
 
 /**
  * Wrapper service of ipfs-core.
+ *
+ * @dynamic
  */
 @Injectable({
   providedIn: 'root',
@@ -19,7 +21,7 @@ export class NgIpfsService {
   private ipfs: typeof Ipfs;
   private node: null | PromiseType<ReturnType<typeof Ipfs.create>> = null;
 
-  constructor(@Inject(undefined) @Optional() node: typeof Ipfs | undefined) {
+  constructor(@Inject('Ipfs') @Optional() node: typeof Ipfs | undefined) {
     this.ipfs = node ? node : Ipfs;
   }
 
