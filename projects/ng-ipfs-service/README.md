@@ -4,6 +4,12 @@ Wrapper service of ipfs-core for Angular application.
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
+## Installation
+
+```bash
+$ npm install ng-ipfs-service
+```
+
 ## Features
 
 Start Ipfs node and inject to your application.
@@ -24,18 +30,6 @@ Get Ipfs Instance.
 ## API of IPFS
 
 [IPFS Core API](https://github.com/ipfs/js-ipfs/tree/master/docs/core-api#ipfs-core-api)
-
-## Build
-
-Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `yarn build --prod`, go to the dist folder `cd dist/ng-ipfs-service` and run `npm publish`.
-
-## Running unit tests
-
-Run `yarn test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Application setting
 

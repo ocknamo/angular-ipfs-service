@@ -11,7 +11,10 @@
     "stream": "npm:stream-browserify@^2.0.1"
   },
   "license": "MIT",
-  "keywords": ["IPFS", "Angular"],
+  "keywords": [
+    "IPFS",
+    "Angular"
+  ],
   "homepage": "https://github.com/ocknamo/ng-ipfs-service",
   "repository": {
     "type": "git",
