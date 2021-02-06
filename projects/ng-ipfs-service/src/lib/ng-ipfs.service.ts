@@ -9,6 +9,9 @@ declare global {
   }
 }
 
+/**
+ * Wrapper service of ipfs-core.
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -40,7 +43,7 @@ export class NgIpfsService {
     }
   }
 
-  getIpfs(): null | PromiseType<ReturnType<typeof Ipfs.create>> {
+  get(): null | PromiseType<ReturnType<typeof Ipfs.create>> {
     return this.node;
   }
 }

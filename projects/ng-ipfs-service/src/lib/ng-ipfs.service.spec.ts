@@ -17,10 +17,10 @@ describe('NgIpfsService', () => {
 
   it('should get Ipfs node', async () => {
     await service.start();
-    expect(service.getIpfs()).toBe('This is mock node' as any);
+    expect(service.get()).toBe('This is mock node' as any);
   });
 
   it('should not get Ipfs node without start', async () => {
-    expect(service.getIpfs()).toBeNull();
+    expect(service.get()).toBeNull();
   });
 });

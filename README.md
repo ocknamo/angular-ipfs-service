@@ -11,13 +11,13 @@ Start Ipfs node and inject to your application.
 ## API
 
 - [`NgIpfsService.start()`](#NgIpfsServicestart)
-- [`NgIpfsService.getIpfs()`](#NgIpfsServicegetIpfs)
+- [`NgIpfsService.get()`](#NgIpfsServiceget)
 
 ### `NgIpfsService.start()`
 
 Start Ipfs node.
 
-### `NgIpfsService.getIpfs()`
+### `NgIpfsService.get()`
 
 Get Ipfs Instance.
 
