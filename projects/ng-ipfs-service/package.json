@@ -10,5 +10,14 @@
     "ipfs-core": "^0.5.1",
     "stream": "npm:stream-browserify@^2.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["IPFS", "Angular"],
+  "homepage": "https://github.com/ocknamo/ng-ipfs-service",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ocknamo/ng-ipfs-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ocknamo/ng-ipfs-service/issues"
+  }
 }
