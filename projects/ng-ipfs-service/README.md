@@ -14,7 +14,7 @@ $ npm install ng-ipfs-service
 
 Start Ipfs node and inject to your application.
 
-## API
+## Methods
 
 - [`NgIpfsService.start()`](#NgIpfsServicestart)
 - [`NgIpfsService.get()`](#NgIpfsServiceget)
@@ -23,9 +23,17 @@ Start Ipfs node and inject to your application.
 
 Start Ipfs node.
 
+#### Returns
+
+`Promise<void>`
+
 ### `NgIpfsService.get()`
 
 Get Ipfs Instance.
+
+#### Returns
+
+`Ipfs | null`
 
 ## API of IPFS
 
