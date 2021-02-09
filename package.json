@@ -6,7 +6,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "yarn prettier --write ."
+    "format": "yarn prettier --write .",
+    "ci:build": "yarn build --prod",
+    "ci:test": "ng test --code-coverage",
+    "ci:format-and-lint": "yarn lint && yarn format && git diff --exit-code"
   },
   "private": true,
   "dependencies": {
