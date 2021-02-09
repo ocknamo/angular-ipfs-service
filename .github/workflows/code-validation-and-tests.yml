@@ -12,7 +12,7 @@ jobs:
           node-version: 12.x
           registry-url: "https://registry.npmjs.org"
       - name: setup project
-        run: yarn
+        run: yarn --frozen-lockfile
       - name: format-and-lint
         run: yarn ci:format-and-lint
       - name: test
