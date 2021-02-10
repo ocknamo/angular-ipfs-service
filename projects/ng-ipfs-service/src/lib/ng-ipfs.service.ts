@@ -1,7 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
-import * as Ipfs from 'ipfs-core';
-import { PromiseType } from './utils/types';
+import * as IpfsCore from 'ipfs-core';
 
 declare global {
   interface Window {
@@ -18,34 +17,36 @@ declare global {
   providedIn: 'root',
 })
 export class NgIpfsService {
-  private ipfs: typeof Ipfs;
-  private node: null | PromiseType<ReturnType<typeof Ipfs.create>> = null;
+  private _ipfsCore: typeof IpfsCore;
+  private node: null | IpfsCore.IPFS = null;
 
-  constructor(@Inject('Ipfs') @Optional() node: typeof Ipfs | undefined) {
-    this.ipfs = node ? node : Ipfs;
+  constructor(
+    @Inject('IpfsCore') @Optional() ipfsCore: typeof IpfsCore | undefined
+  ) {
+    this._ipfsCore = ipfsCore ? ipfsCore : IpfsCore;
   }
 
   async start(): Promise<void> {
     if (this.node) {
-      console.log('IPFS already started');
+      console.log('Ng-ipfs: IPFS already started');
     } else if (window.ipfs && window.ipfs.enable) {
-      console.log('Found window.ipfs');
+      console.log('Ng-ipfs: Found window.ipfs');
       this.node = await window.ipfs.enable({ commands: ['id'] });
     } else {
       // eslint-disable-next-line no-console
-      console.time('IPFS Started');
+      console.time('Ng-ipfs: IPFS Started');
       try {
-        this.node = await this.ipfs.create();
+        this.node = await this._ipfsCore.create();
         // eslint-disable-next-line no-console
-        console.timeEnd('IPFS Started');
+        console.timeEnd('Ng-ipfs: IPFS Started');
       } catch (error) {
-        console.error('IPFS init error:', error);
+        console.error('Ng-ipfs: IPFS init error:', error);
         this.node = null;
       }
     }
   }
 
-  get(): null | PromiseType<ReturnType<typeof Ipfs.create>> {
+  get(): IpfsCore.IPFS | null {
     return this.node;
   }
 }
