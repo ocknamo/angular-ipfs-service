@@ -46,7 +46,11 @@ export class NgIpfsService {
     }
   }
 
-  get(): IpfsCore.IPFS | null {
+  get(): IpfsCore.IPFS {
+    if (this.node === null) {
+      throw new Error('Ng-ipfs: Ipfs node is not started yet.');
+    }
+
     return this.node;
   }
 }

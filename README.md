@@ -27,7 +27,7 @@ Get Ipfs Instance.
 
 #### Returns
 
-`Ipfs | null`
+`IPFS`
 
 ## API of IPFS
 

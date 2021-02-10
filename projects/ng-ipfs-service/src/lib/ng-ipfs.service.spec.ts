@@ -21,6 +21,8 @@ describe('NgIpfsService', () => {
   });
 
   it('should not get Ipfs node without start', async () => {
-    expect(service.get()).toBeNull();
+    expect(service.get.bind(service)).toThrowError(
+      'Ng-ipfs: Ipfs node is not started yet.'
+    );
   });
 });
