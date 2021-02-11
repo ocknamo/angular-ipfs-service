@@ -1,12 +1,19 @@
 {
   "name": "ng-ipfs-service",
-  "version": "0.0.4",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=12",
+    "yarn": "^1.22.5"
+  },
   "scripts": {
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "yarn prettier --write ."
+    "format": "yarn prettier --write .",
+    "ci:build": "yarn build --prod",
+    "ci:test": "ng test --code-coverage",
+    "ci:format-and-lint": "yarn lint && yarn format && git diff --exit-code"
   },
   "private": true,
   "dependencies": {

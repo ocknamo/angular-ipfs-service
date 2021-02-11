@@ -1,0 +1,27 @@
+name: release
+on:
+  release:
+    types: [created]
+jobs:
+  code-validation-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: "https://registry.npmjs.org"
+      - name: setup project
+        run: yarn --frozen-lockfile
+      - name: format-and-lint
+        run: yarn ci:format-and-lint
+      - name: test
+        run: yarn ci:test
+      - name: build
+        run: yarn ci:build
+      - name: publish
+        run: cd ./dist/ng-ipfs-service/ && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
