@@ -1,6 +1,8 @@
 name: code-validation-and-tests
 on:
   push:
+    branches:
+      - "**"
     tags:
       - "!*"
 jobs:
