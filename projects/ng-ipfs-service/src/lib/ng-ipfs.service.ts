@@ -1,6 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
 import * as IpfsCore from 'ipfs-core';
+import { Options } from 'ipfs-core/src/components';
 
 declare global {
   interface Window {
@@ -26,7 +27,7 @@ export class NgIpfsService {
     this._ipfsCore = ipfsCore ? ipfsCore : IpfsCore;
   }
 
-  async start(): Promise<void> {
+  async start(options: Options = {}): Promise<void> {
     if (this.node) {
       console.log('Ng-ipfs: IPFS already started');
     } else if (window.ipfs && window.ipfs.enable) {
@@ -34,11 +35,11 @@ export class NgIpfsService {
       this.node = await window.ipfs.enable({ commands: ['id'] });
     } else {
       // eslint-disable-next-line no-console
-      console.time('Ng-ipfs: IPFS Started');
+      console.time('Ng-ipfs: IPFS is starting');
       try {
-        this.node = await this._ipfsCore.create();
+        this.node = await this._ipfsCore.create(options);
         // eslint-disable-next-line no-console
-        console.timeEnd('Ng-ipfs: IPFS Started');
+        console.timeEnd('Ng-ipfs: IPFS started');
       } catch (error) {
         console.error('Ng-ipfs: IPFS init error:', error);
         this.node = null;

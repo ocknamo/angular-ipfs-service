@@ -13,13 +13,17 @@ Start Ipfs node and inject to your application.
 - [`NgIpfsService.start()`](#NgIpfsServicestart)
 - [`NgIpfsService.get()`](#NgIpfsServiceget)
 
-### `NgIpfsService.start()`
+### `NgIpfsService.start([options])`
 
 Start Ipfs node.
 
 #### Returns
 
 `Promise<void>`
+
+#### options
+
+[options of IPFS.crate](https://github.com/ipfs/js-ipfs/blob/master/docs/MODULE.md#ipfscreateoptions)
 
 ### `NgIpfsService.get()`
 
