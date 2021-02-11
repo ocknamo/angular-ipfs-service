@@ -1,3 +1,10 @@
+<a href="https://github.com/ocknamo/ng-ipfs-service/actions?query=workflow%3Acode-validation-and-tests">
+  <img src="https://github.com/ocknamo/ng-ipfs-service/workflows/code-validation-and-tests/badge.svg"/>
+</a>
+<a href="https://codecov.io/gh/ocknamo/ng-ipfs-service">
+  <img src="https://codecov.io/gh/ocknamo/ng-ipfs-service/branch/main/graph/badge.svg?token=QK38OUHXNS"/>
+</a>
+
 # NgIpfsService
 
 Wrapper service of ipfs-core for Angular application.

@@ -17,5 +17,9 @@ jobs:
         run: yarn ci:format-and-lint
       - name: test
         run: yarn ci:test
+      - name: upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: build
         run: yarn ci:build
