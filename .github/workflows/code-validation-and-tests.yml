@@ -1,5 +1,8 @@
 name: code-validation-and-tests
-on: [push]
+on:
+  push:
+    tags:
+      - "!*"
 jobs:
   code-validation-and-tests:
     runs-on: ubuntu-latest
