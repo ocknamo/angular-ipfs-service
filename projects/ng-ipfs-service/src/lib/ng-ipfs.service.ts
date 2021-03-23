@@ -14,9 +14,7 @@ declare global {
  *
  * @dynamic
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class NgIpfsService {
   private _ipfsCore: typeof IpfsCore;
   private node: null | IpfsCore.IPFS = null;
