@@ -38,7 +38,7 @@ Get Ipfs Instance.
 
 #### Returns
 
-`IPFS`
+`Promise<IPFS>`
 
 ## API of IPFS
 

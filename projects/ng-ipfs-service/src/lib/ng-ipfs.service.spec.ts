@@ -17,12 +17,12 @@ describe('NgIpfsService', () => {
 
   it('should get Ipfs node', async () => {
     await service.start();
-    expect(service.get()).toBe('This is mock node' as any);
+    await expectAsync(service.get()).toBeResolvedTo('This is mock node' as any);
   });
 
   it('should not get Ipfs node without start', async () => {
     expect(service.get.bind(service)).toThrowError(
-      'Ng-ipfs: Ipfs node is not started yet.'
+      'Ng-ipfs: Ipfs node is not started yet. Please call "start()" before.'
     );
   });
 });
