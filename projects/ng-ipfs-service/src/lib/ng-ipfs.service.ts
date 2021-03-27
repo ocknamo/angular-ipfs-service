@@ -37,7 +37,7 @@ export class NgIpfsService {
       try {
         this.node = await this._ipfsCore.create(options);
         // eslint-disable-next-line no-console
-        console.timeEnd('Ng-ipfs: IPFS started');
+        console.timeEnd('Ng-ipfs: IPFS is started');
       } catch (error) {
         console.error('Ng-ipfs: IPFS init error:', error);
         this.node = null;
