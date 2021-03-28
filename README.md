@@ -11,6 +11,12 @@ Wrapper service of ipfs-core for Angular application.
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
+## Installation
+
+```bash
+$ npm install ng-ipfs-service
+```
+
 ## Features
 
 Start Ipfs node and inject to your application.
