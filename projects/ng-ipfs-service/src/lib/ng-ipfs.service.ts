@@ -1,4 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, skip, take } from 'rxjs/operators';
 
 import * as IpfsCore from 'ipfs-core';
 import { Options } from 'ipfs-core/src/components';
@@ -9,17 +11,19 @@ declare global {
   }
 }
 
+type ServiceStatus = 'INIT' | 'STARTING' | 'STARTED';
+
 /**
  * Wrapper service of ipfs-core.
  *
  * @dynamic
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class NgIpfsService {
   private _ipfsCore: typeof IpfsCore;
-  private node: null | IpfsCore.IPFS = null;
+
+  private status$ = new BehaviorSubject<ServiceStatus>('INIT');
+  private node$ = new BehaviorSubject<null | IpfsCore.IPFS>(null);
 
   constructor(
     @Inject('IpfsCore') @Optional() ipfsCore: typeof IpfsCore | undefined
@@ -28,30 +32,56 @@ export class NgIpfsService {
   }
 
   async start(options: Options = {}): Promise<void> {
-    if (this.node) {
-      console.log('Ng-ipfs: IPFS already started');
-    } else if (window.ipfs && window.ipfs.enable) {
+    const status = this.status$.getValue();
+
+    if (status === 'INIT' && window.ipfs && window.ipfs.enable) {
       console.log('Ng-ipfs: Found window.ipfs');
-      this.node = await window.ipfs.enable({ commands: ['id'] });
-    } else {
-      // eslint-disable-next-line no-console
-      console.time('Ng-ipfs: IPFS is starting');
-      try {
-        this.node = await this._ipfsCore.create(options);
+      const node = await window.ipfs.enable({ commands: ['id'] });
+      this.node$.next(node);
+      this.status$.next('STARTED');
+
+      return;
+    }
+
+    switch (status) {
+      case 'STARTED':
+      case 'STARTING':
+        console.log('Ng-ipfs: IPFS is already started');
+        break;
+      case 'INIT':
         // eslint-disable-next-line no-console
-        console.timeEnd('Ng-ipfs: IPFS started');
-      } catch (error) {
-        console.error('Ng-ipfs: IPFS init error:', error);
-        this.node = null;
-      }
+        console.time('Ng-ipfs: IPFS is started');
+        this.status$.next('STARTING');
+        try {
+          const node = await this._ipfsCore.create(options);
+          this.node$.next(node);
+          this.status$.next('STARTED');
+          // eslint-disable-next-line no-console
+          console.timeEnd('Ng-ipfs: IPFS is started');
+        } catch (error) {
+          console.error('Ng-ipfs: IPFS init error:', error);
+          this.node$.next(null);
+          this.status$.next('INIT');
+        }
+        break;
     }
   }
 
-  get(): IpfsCore.IPFS {
-    if (this.node === null) {
-      throw new Error('Ng-ipfs: Ipfs node is not started yet.');
+  get(): Promise<IpfsCore.IPFS> {
+    const status = this.status$.getValue();
+
+    if (status === 'INIT') {
+      throw new Error(
+        'Ng-ipfs: Ipfs node is not started yet. Please call "start()" before.'
+      );
     }
 
-    return this.node;
+    // When status is 'STARTING' or 'STARTED'.
+    return this.node$
+      .pipe(
+        filter((v) => !!v),
+        take(1)
+      )
+      .toPromise();
   }
 }

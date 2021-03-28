@@ -1,3 +1,10 @@
+<a href="https://github.com/ocknamo/ng-ipfs-service/actions?query=workflow%3Acode-validation-and-tests">
+  <img src="https://github.com/ocknamo/ng-ipfs-service/workflows/code-validation-and-tests/badge.svg"/>
+</a>
+<a href="https://codecov.io/gh/ocknamo/ng-ipfs-service">
+  <img src="https://codecov.io/gh/ocknamo/ng-ipfs-service/branch/main/graph/badge.svg?token=QK38OUHXNS"/>
+</a>
+
 # NgIpfsService
 
 Wrapper service of ipfs-core for Angular application.
@@ -31,7 +38,7 @@ Get Ipfs Instance.
 
 #### Returns
 
-`IPFS`
+`Promise<IPFS>`
 
 ## API of IPFS
 
@@ -51,18 +58,30 @@ Run `yarn test` to execute the unit tests via [Karma](https://karma-runner.githu
 
 ## Application setting
 
-### Polyfills
+### custom-webpack setting
 
-Add the following to your src/polyfills.ts file.
+Using custom webpack config is recommened in order to provide more better node polyfills.
 
-```polyfills.ts
-(window as any).global = window;
-global.Buffer = global.Buffer || require('buffer').Buffer;
-(window as any).process = {
-  env: { DEBUG: undefined },
-  version: [],
-  nextTick: require('next-tick'),
-};
+- Use [@angular-builders/custom-webpack](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack).
+- Add config file as follow.
+
+```extra-webpack.config.ts
+// extra-webpack.config.ts
+import { Configuration, ProvidePlugin } from 'webpack';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+
+export default {
+  plugins: [
+    new NodePolyfillPlugin(),
+    new ProvidePlugin({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      Buffer: ['buffer', 'Buffer'],
+      global: ['global'],
+      process: 'process/browser',
+    }),
+  ],
+} as Configuration;
+
 ```
 
 ### tsconfig.json
@@ -70,7 +89,27 @@ global.Buffer = global.Buffer || require('buffer').Buffer;
 - Sorry, "strict" mode is not supported now.
 - Set the "skipLibCheck" to "true".
 - Set the "allowSyntheticDefaultImports" to true.
+- Set stream path to stream-browserify as follow.
+
+```tsconfig.json
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "stream": [
+        "node_modules/stream-browserify"
+      ]
+    }
+  }
+```
 
 ### tsconfig.app.json
 
 - Add "node" into types array.
+
+```tsconfig.app.json
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": ["node"]
+  }
+```

@@ -1,5 +1,10 @@
 name: code-validation-and-tests
-on: [push]
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "!*"
 jobs:
   code-validation-and-tests:
     runs-on: ubuntu-latest
@@ -17,5 +22,9 @@ jobs:
         run: yarn ci:format-and-lint
       - name: test
         run: yarn ci:test
+      - name: upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: build
         run: yarn ci:build
