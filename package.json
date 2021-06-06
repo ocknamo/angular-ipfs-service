@@ -1,6 +1,6 @@
 {
   "name": "ng-ipfs-service",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "engines": {
     "node": ">=12",
     "yarn": "^1.22.5"
