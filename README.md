@@ -108,14 +108,3 @@ export default {
     }
   }
 ```
-
-### tsconfig.app.json
-
-- Add "node" into types array.
-
-```tsconfig.app.json
-  "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": ["node"]
-  }
-```
