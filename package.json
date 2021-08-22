@@ -1,6 +1,6 @@
 {
   "name": "ng-ipfs-service",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "engines": {
     "node": ">=12",
     "yarn": "^1.22.5"
@@ -25,7 +25,7 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
-    "ipfs-core": "0.8.0",
+    "ipfs-core": "0.10.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
