@@ -21,22 +21,25 @@ type ServiceStatus = 'INIT' | 'STARTING' | 'STARTED';
 @Injectable()
 export class NgIpfsService {
   private _ipfsCore: typeof IpfsCore;
+  private _window: Window;
 
   private status$ = new BehaviorSubject<ServiceStatus>('INIT');
   private node$ = new BehaviorSubject<null | IpfsCore.IPFS>(null);
 
   constructor(
-    @Inject('IpfsCore') @Optional() ipfsCore: typeof IpfsCore | undefined
+    @Inject('IpfsCore') @Optional() ipfsCore: typeof IpfsCore | undefined,
+    _window?: Window | undefined
   ) {
     this._ipfsCore = ipfsCore ? ipfsCore : IpfsCore;
+    this._window = _window || window;
   }
 
   async start(options: Options = {}): Promise<void> {
     const status = this.status$.getValue();
 
-    if (status === 'INIT' && window.ipfs && window.ipfs.enable) {
+    if (status === 'INIT' && this._window.ipfs && this._window.ipfs.enable) {
       console.log('Ng-ipfs: Found window.ipfs');
-      const node = await window.ipfs.enable({ commands: ['id'] });
+      const node = await this._window.ipfs.enable({ commands: ['id'] });
       this.node$.next(node);
       this.status$.next('STARTED');
 
