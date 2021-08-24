@@ -25,4 +25,18 @@ describe('NgIpfsService', () => {
       'Ng-ipfs: Ipfs node is not started yet. Please call "start()" before.'
     );
   });
+
+  it('should get Ipfs node when existing ipfs in window', async () => {
+    const mockWindow = {
+      ipfs: {
+        enable: () => Promise.resolve('This is mock node from window object'),
+      },
+    };
+    service = new NgIpfsService(mockIpfs as any, mockWindow as Window);
+
+    await service.start();
+    await expectAsync(service.get()).toBeResolvedTo(
+      'This is mock node from window object' as any
+    );
+  });
 });
