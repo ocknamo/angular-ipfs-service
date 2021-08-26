@@ -28,7 +28,7 @@ export class NgIpfsService {
 
   constructor(
     @Inject('IpfsCore') @Optional() ipfsCore: typeof IpfsCore | undefined,
-    _window?: Window | undefined
+    @Inject('Window') @Optional() _window?: Window | undefined
   ) {
     this._ipfsCore = ipfsCore ? ipfsCore : IpfsCore;
     this._window = _window || window;
