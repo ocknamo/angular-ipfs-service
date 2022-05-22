@@ -1,8 +1,8 @@
-<a href="https://github.com/ocknamo/ng-ipfs-service/actions?query=workflow%3Acode-validation-and-tests">
-  <img src="https://github.com/ocknamo/ng-ipfs-service/workflows/code-validation-and-tests/badge.svg"/>
+<a href="https://github.com/ocknamo/angular-ipfs-service/actions?query=workflow%3Acode-validation-and-tests">
+  <img src="https://github.com/ocknamo/angular-ipfs-service/workflows/code-validation-and-tests/badge.svg"/>
 </a>
-<a href="https://codecov.io/gh/ocknamo/ng-ipfs-service">
-  <img src="https://codecov.io/gh/ocknamo/ng-ipfs-service/branch/main/graph/badge.svg?token=QK38OUHXNS"/>
+<a href="https://codecov.io/gh/ocknamo/angular-ipfs-service">
+  <img src="https://codecov.io/gh/ocknamo/angular-ipfs-service/branch/main/graph/badge.svg?token=QK38OUHXNS"/>
 </a>
 
 # NgIpfsService
@@ -14,7 +14,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Installation
 
 ```bash
-$ npm install ng-ipfs-service
+$ npm install angular-ipfs-service
 ```
 
 ## Features

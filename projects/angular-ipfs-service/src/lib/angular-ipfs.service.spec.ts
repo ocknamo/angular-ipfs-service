@@ -1,4 +1,4 @@
-import { NgIpfsService } from './ng-ipfs.service';
+import { NgIpfsService } from './angular-ipfs.service';
 
 const mockIpfs = {
   create: () => Promise.resolve('This is mock node'),

@@ -22,6 +22,6 @@ jobs:
       - name: build
         run: yarn ci:build
       - name: publish
-        run: cd ./dist/ng-ipfs-service/ && npm publish
+        run: cd ./dist/angular-ipfs-service/ && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
