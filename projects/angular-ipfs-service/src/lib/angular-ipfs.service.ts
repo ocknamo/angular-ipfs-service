@@ -1,9 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, skip, take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 
 import * as IpfsCore from 'ipfs-core';
-import { Options } from 'ipfs-core/src/components';
+import { Options } from 'ipfs-core';
 
 declare global {
   interface Window {
