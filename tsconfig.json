@@ -11,9 +11,9 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "ng-ipfs-service": [
-        "dist/ng-ipfs-service/ng-ipfs-service",
-        "dist/ng-ipfs-service"
+      "angular-ipfs-service": [
+        "dist/angular-ipfs-service/angular-ipfs-service",
+        "dist/angular-ipfs-service"
       ],
       "stream": ["node_modules/stream-browserify"],
       "dns": ["node_modules/node-libs-browser/mock/dns.js"]

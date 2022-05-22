@@ -6,8 +6,8 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/ng-ipfs-service/tsconfig.lib.json",
-          "projects/ng-ipfs-service/tsconfig.spec.json"
+          "projects/angular-ipfs-service/tsconfig.lib.json",
+          "projects/angular-ipfs-service/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },
