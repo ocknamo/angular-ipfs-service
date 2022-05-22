@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NgIpfsService } from './angular-ipfs.service';
+import { AngularIpfsService } from './angular-ipfs.service';
 
 @NgModule({
-  providers: [NgIpfsService],
+  providers: [AngularIpfsService],
 })
-export class NgIpfsModule {}
+export class AngularIpfsModule {}

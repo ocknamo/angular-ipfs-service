@@ -1,14 +1,14 @@
-import { NgIpfsService } from './angular-ipfs.service';
+import { AngularIpfsService } from './angular-ipfs.service';
 
 const mockIpfs = {
   create: () => Promise.resolve('This is mock node'),
 };
 
-describe('NgIpfsService', () => {
-  let service: NgIpfsService;
+describe('AngularIpfsService', () => {
+  let service: AngularIpfsService;
 
   beforeEach(() => {
-    service = new NgIpfsService(mockIpfs as any);
+    service = new AngularIpfsService(mockIpfs as any);
   });
 
   it('should be created', () => {
@@ -32,7 +32,7 @@ describe('NgIpfsService', () => {
         enable: () => Promise.resolve('This is mock node from window object'),
       },
     };
-    service = new NgIpfsService(mockIpfs as any, mockWindow as Window);
+    service = new AngularIpfsService(mockIpfs as any, mockWindow as Window);
 
     await service.start();
     await expectAsync(service.get()).toBeResolvedTo(

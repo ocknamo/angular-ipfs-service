@@ -19,7 +19,7 @@ type ServiceStatus = 'INIT' | 'STARTING' | 'STARTED';
  * @dynamic
  */
 @Injectable()
-export class NgIpfsService {
+export class AngularIpfsService {
   private _ipfsCore: typeof IpfsCore;
   private _window: Window;
 

@@ -5,7 +5,7 @@
   <img src="https://codecov.io/gh/ocknamo/angular-ipfs-service/branch/main/graph/badge.svg?token=QK38OUHXNS"/>
 </a>
 
-# NgIpfsService
+# AngularIpfsService
 
 Wrapper service of ipfs-core for Angular application.
 
@@ -23,10 +23,10 @@ Start Ipfs node and inject to your application.
 
 ## Methods
 
-- [`NgIpfsService.start()`](#NgIpfsServicestart)
-- [`NgIpfsService.get()`](#NgIpfsServiceget)
+- [`AngularIpfsService.start()`](#AngularIpfsServicestart)
+- [`AngularIpfsService.get()`](#AngularIpfsServiceget)
 
-### `NgIpfsService.start([options])`
+### `AngularIpfsService.start([options])`
 
 Start Ipfs node.
 
@@ -38,7 +38,7 @@ Start Ipfs node.
 
 [options of IPFS.crate](https://github.com/ipfs/js-ipfs/blob/master/docs/MODULE.md#ipfscreateoptions)
 
-### `NgIpfsService.get()`
+### `AngularIpfsService.get()`
 
 Get Ipfs Instance.
 
